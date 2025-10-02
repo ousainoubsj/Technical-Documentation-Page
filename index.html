@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Technical Documentation</title>
+    <link rel="stylesheet" href="public/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Hidden checkbox for CSS-only hamburger menu toggle -->
+    <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle navigation menu">
+
+    <!-- Sticky header with site title and hamburger menu -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="public/javaScript.png" alt="JavaScript Logo" class="logo">
+            </div>
+            <div class="header-title">JavaScript Documentation</div>
+            <!-- Hamburger menu button (label for checkbox) -->
+            <label for="sidebar-toggle" class="hamburger" aria-label="Toggle navigation menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </label>
+        </div>
+    </header>
+
+    <!-- Main layout container -->
+    <div class="container">
+        <!-- Sidebar navigation panel -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <h2 class="sidebar-title">Table of Contents</h2>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#introduction" class="nav-link">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#what-you-should-know" class="nav-link">What you should know</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#hello-world" class="nav-link">Hello World</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#variables" class="nav-link">Variables</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#data-types" class="nav-link">Data Types</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#control-structures" class="nav-link">Control Structures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#functions" class="nav-link">Functions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#objects" class="nav-link">Objects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#arrays" class="nav-link">Arrays</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#dom-manipulation" class="nav-link">DOM Manipulation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#reference" class="nav-link">Reference</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main content area -->
+        <main class="main-content">
+            <!-- Introduction section -->
+            <section id="introduction" class="content-section">
+                <h2 class="section-title">Introduction</h2>
+                <p class="section-text">
+                    JavaScript is a cross-platform, object-oriented scripting language. It is a small and lightweight
+                    language.
+                    Inside a host environment (for example, a web browser), JavaScript can be connected to the objects
+                    of its
+                    environment to provide programmatic control over them.
+                </p>
+                <p class="section-text">
+                    JavaScript contains a standard library of objects, such as Array, Date, and Math, and a core set of
+                    language elements such as operators, control structures, and statements. Core JavaScript can be
+                    extended
+                    for a variety of purposes by supplementing it with additional objects.
+                </p>
+            </section>
+
+            <!-- Prerequisites section -->
+            <section id="what-you-should-know" class="content-section">
+                <h2 class="section-title">What you should know</h2>
+                <p class="section-text">
+                    This guide assumes you have the following basic background:
+                </p>
+                <ul class="section-list">
+                    <li>A general understanding of the Internet and the World Wide Web (WWW).</li>
+                    <li>Good working knowledge of HyperText Markup Language (HTML).</li>
+                    <li>Some programming experience. If you are new to programming, try one of the tutorials linked on
+                        the main page about JavaScript.</li>
+                </ul>
+            </section>
+
+            <!-- Hello World tutorial section -->
+            <section id="hello-world" class="content-section">
+                <h2 class="section-title">Hello World</h2>
+                <p class="section-text">
+                    To get started with writing JavaScript, open the Scratchpad and write your first "Hello world"
+                    JavaScript code:
+                </p>
+                <div class="code-block">
+                    <pre><code>function greetMe(yourName) { 
+    alert("Hello " + yourName); 
+}
+greetMe("World");</code></pre>
+                </div>
+                <p class="section-text">
+                    Select the code in the pad and hit Ctrl+R to watch it unfold in your browser!
+                </p>
+            </section>
+
+            <!-- Variables section -->
+            <section id="variables" class="content-section">
+                <h2 class="section-title">Variables</h2>
+                <p class="section-text">
+                    Variables are containers for storing data values. In JavaScript, you can declare variables using
+                    three different keywords: <code>var</code>, <code>let</code>, and <code>const</code>. Each has
+                    different scoping rules and behaviors.
+                </p>
+                <p class="section-text">
+                    A JavaScript identifier must start with a letter, underscore (_), or dollar sign ($); subsequent
+                    characters can also be digits (0-9). Because JavaScript is case sensitive, letters include the
+                    characters "A" through "Z" (uppercase) and the characters "a" through "z" (lowercase).
+                </p>
+                <div class="code-block">
+                    <pre><code>// Variable declarations with different scopes
+var globalVar = "I'm globally scoped";     // Function-scoped, can be redeclared
+let blockVar = "I'm block scoped";         // Block-scoped, cannot be redeclared
+const constantVar = "I cannot be changed"; // Block-scoped, immutable
+
+// Variable naming conventions
+let userName = "john_doe";        // camelCase for variables
+const MAX_USERS = 100;           // UPPER_SNAKE_CASE for constants
+let $specialVar = "jQuery style"; // $ prefix for special variables
+
+// Hoisting behavior
+console.log(hoistedVar); // undefined (not error)
+var hoistedVar = "I'm hoisted";
+
+// Temporal Dead Zone
+console.log(tdzVar); // ReferenceError
+let tdzVar = "I'm in TDZ";</code></pre>
+                </div>
+            </section>
+
+            <!-- Data Types section -->
+            <section id="data-types" class="content-section">
+                <h2 class="section-title">Data Types</h2>
+                <p class="section-text">
+                    JavaScript is a dynamically typed language, meaning variables can hold values of any type without
+                    explicit type declarations. JavaScript has two main categories of data types: primitive types and
+                    reference types.
+                </p>
+                <div class="code-block">
+                    <pre><code>// Primitive Data Types
+let stringType = "Hello, World!";           // String
+let numberType = 42;                        // Number
+let booleanType = true;                      // Boolean
+let undefinedType = undefined;              // Undefined
+let nullType = null;                        // Null (object type)
+let symbolType = Symbol('unique');          // Symbol (ES6+)
+let bigIntType = 123n;                      // BigInt (ES2020+)
+
+// Reference Data Types
+let objectType = { name: "John", age: 30 }; // Object
+let arrayType = [1, 2, 3, 4, 5];            // Array (special object)
+let functionType = function() { return 42; }; // Function
+
+// Type checking
+console.log(typeof stringType);    // "string"
+console.log(typeof numberType);    // "number"
+console.log(typeof booleanType);   // "boolean"
+console.log(typeof undefinedType); // "undefined"
+console.log(typeof nullType);     // "object" (known quirk)
+console.log(typeof objectType);   // "object"
+console.log(typeof functionType); // "function"
+
+// Type coercion examples
+console.log("5" + 3);        // "53" (string concatenation)
+console.log("5" - 3);         // 2 (numeric subtraction)
+console.log("5" * 3);        // 15 (numeric multiplication)
+console.log(!!"hello");      // true (truthy conversion)
+console.log(!!"");           // false (falsy conversion)</code></pre>
+                </div>
+            </section>
+
+            <!-- Control Structures section -->
+            <section id="control-structures" class="content-section">
+                <h2 class="section-title">Control Structures</h2>
+                <p class="section-text">
+                    Control structures allow you to control the flow of execution in your JavaScript programs. They
+                    include conditional statements, loops, and error handling mechanisms.
+                </p>
+                <div class="code-block">
+                    <pre><code>// Conditional Statements
+let age = 18;
+let hasLicense = true;
+
+// if-else statement
+if (age >= 18) {
+    console.log("You are an adult");
+} else if (age >= 13) {
+    console.log("You are a teenager");
+} else {
+    console.log("You are a child");
+}
+
+// Ternary operator
+let status = age >= 18 ? "adult" : "minor";
+
+// Switch statement
+let day = "Monday";
+switch (day) {
+    case "Monday":
+        console.log("Start of work week");
+        break;
+    case "Friday":
+        console.log("TGIF!");
+        break;
+    default:
+        console.log("Regular day");
+}
+
+// Loops
+// For loop
+for (let i = 0; i < 5; i++) {
+    console.log(`Iteration ${i}`);
+}
+
+// While loop
+let count = 0;
+while (count < 3) {
+    console.log(`Count: ${count}`);
+    count++;
+}
+
+// Do-while loop
+let x = 0;
+do {
+    console.log(`Do-while: ${x}`);
+    x++;
+} while (x < 3);
+
+// For-in loop (objects)
+const person = { name: "John", age: 30, city: "NYC" };
+for (let key in person) {
+    console.log(`${key}: ${person[key]}`);
+}
+
+// For-of loop (arrays, strings)
+const fruits = ["apple", "banana", "orange"];
+for (let fruit of fruits) {
+    console.log(fruit);
+}
+
+// Break and continue
+for (let i = 0; i < 10; i++) {
+    if (i === 3) continue; // Skip iteration
+    if (i === 7) break;     // Exit loop
+    console.log(i);
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- Functions section -->
+            <section id="functions" class="content-section">
+                <h2 class="section-title">Functions</h2>
+                <p class="section-text">
+                    Functions are one of the fundamental building blocks in JavaScript. A function is a JavaScript
+                    procedure—a set of statements that performs a task or calculates a value. Functions help organize
+                    code into reusable blocks and provide a way to structure programs.
+                </p>
+                <div class="code-block">
+                    <pre><code>// Function Declaration (hoisted)
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+// Function Expression
+const multiply = function(a, b) {
+    return a * b;
+};
+
+// Arrow Function (ES6+)
+const divide = (a, b) => {
+    return a / b;
+};
+
+// Arrow Function (shorthand for single expression)
+const add = (a, b) => a + b;
+
+// Function with default parameters
+function createUser(name, age = 18, isActive = true) {
+    return { name, age, isActive };
+}
+
+// Function with rest parameters
+function sum(...numbers) {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+
+// Higher-order function
+function createMultiplier(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+
+const double = createMultiplier(2);
+console.log(double(5)); // 10
+
+// Immediately Invoked Function Expression (IIFE)
+(function() {
+    console.log("This runs immediately!");
+})();
+
+// Function methods: call, apply, bind
+const person = {
+    name: "John",
+    greet: function() {
+        return `Hello, I'm ${this.name}`;
+    }
+};
+
+const anotherPerson = { name: "Jane" };
+
+// Using call
+console.log(person.greet.call(anotherPerson)); // "Hello, I'm Jane"
+
+// Using apply
+console.log(person.greet.apply(anotherPerson)); // "Hello, I'm Jane"
+
+// Using bind
+const boundGreet = person.greet.bind(anotherPerson);
+console.log(boundGreet()); // "Hello, I'm Jane"</code></pre>
+                </div>
+                <p class="section-text">
+                    Functions can accept parameters, return values, and be passed as arguments to other functions. They
+                    support closures, which allow them to access variables from their outer scope even after the outer
+                    function has returned.
+                </p>
+            </section>
+
+            <!-- Objects section -->
+            <section id="objects" class="content-section">
+                <h2 class="section-title">Objects</h2>
+                <p class="section-text">
+                    Objects are collections of properties, where each property is a key-value pair. They are the
+                    fundamental data structure in JavaScript and are used to represent real-world entities and complex
+                    data structures.
+                </p>
+                <div class="code-block">
+                    <pre><code>// Object Literal
+const person = {
+    name: "John Doe",
+    age: 30,
+    city: "New York",
+    isEmployed: true,
+    hobbies: ["reading", "gaming", "cooking"],
+    address: {
+        street: "123 Main St",
+        zipCode: "10001"
+    },
+    greet: function() {
+        return `Hello, I'm ${this.name}`;
+    }
+};
+
+// Accessing properties
+console.log(person.name);           // "John Doe"
+console.log(person["age"]);         // 30
+console.log(person.address.street); // "123 Main St"
+
+// Adding properties
+person.email = "john@example.com";
+person["phone"] = "555-1234";
+
+// Object methods
+const calculator = {
+    add: function(a, b) {
+        return a + b;
+    },
+    subtract(a, b) {  // Shorthand method syntax
+        return a - b;
+    },
+    multiply: (a, b) => a * b  // Arrow function method
+};
+
+// Object constructor
+function Car(make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    this.start = function() {
+        return `${this.make} ${this.model} started!`;
+    };
+}
+
+const myCar = new Car("Toyota", "Camry", 2020);
+
+// ES6 Classes
+class Animal {
+    constructor(name, species) {
+        this.name = name;
+        this.species = species;
+    }
+    
+    speak() {
+        return `${this.name} makes a sound`;
+    }
+    
+    static getKingdom() {
+        return "Animalia";
+    }
+}
+
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name, "Canine");
+        this.breed = breed;
+    }
+    
+    speak() {
+        return `${this.name} barks!`;
+    }
+}
+
+const myDog = new Dog("Buddy", "Golden Retriever");
+
+// Object destructuring
+const { name, age, city } = person;
+console.log(name, age, city);
+
+// Object spread operator
+const updatedPerson = { ...person, age: 31, newProperty: "value" };
+
+// Object methods
+console.log(Object.keys(person));     // ["name", "age", "city", ...]
+console.log(Object.values(person));   // ["John Doe", 30, "New York", ...]
+console.log(Object.entries(person));  // [["name", "John Doe"], ["age", 30], ...]</code></pre>
+                </div>
+            </section>
+
+            <!-- Arrays section -->
+            <section id="arrays" class="content-section">
+                <h2 class="section-title">Arrays</h2>
+                <p class="section-text">
+                    Arrays are ordered collections of data that can hold multiple values. They are special objects in
+                    JavaScript with numeric indices and built-in methods for manipulation.
+                </p>
+                <div class="code-block">
+                    <pre><code>// Array creation
+const fruits = ["apple", "banana", "orange"];
+const numbers = new Array(1, 2, 3, 4, 5);
+const mixed = [1, "hello", true, { name: "John" }];
+
+// Array access and modification
+console.log(fruits[0]);        // "apple"
+fruits[1] = "grape";           // Modify element
+fruits.push("mango");         // Add to end
+fruits.unshift("kiwi");       // Add to beginning
+fruits.pop();                 // Remove from end
+fruits.shift();               // Remove from beginning
+
+// Array methods
+const numbers = [1, 2, 3, 4, 5];
+
+// Iteration methods
+numbers.forEach(num => console.log(num * 2));
+const doubled = numbers.map(num => num * 2);
+const evens = numbers.filter(num => num % 2 === 0);
+const sum = numbers.reduce((acc, num) => acc + num, 0);
+
+// Search methods
+const found = numbers.find(num => num > 3);        // 4
+const index = numbers.findIndex(num => num > 3);   // 3
+const hasEven = numbers.some(num => num % 2 === 0); // true
+const allPositive = numbers.every(num => num > 0);  // true
+
+// Array manipulation
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const combined = arr1.concat(arr2);           // [1, 2, 3, 4, 5, 6]
+const sliced = combined.slice(1, 4);          // [2, 3, 4]
+const spliced = combined.splice(2, 2, 7, 8); // Removes [3, 4], adds [7, 8]
+
+// Array sorting
+const names = ["Charlie", "Alice", "Bob"];
+names.sort();                    // ["Alice", "Bob", "Charlie"]
+const scores = [85, 92, 78, 96];
+scores.sort((a, b) => b - a);    // [96, 92, 85, 78] (descending)
+
+// Array destructuring
+const [first, second, ...rest] = [1, 2, 3, 4, 5];
+console.log(first, second, rest); // 1, 2, [3, 4, 5]
+
+// Spread operator
+const arr3 = [...arr1, ...arr2]; // [1, 2, 3, 4, 5, 6]
+
+// Multidimensional arrays
+const matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+console.log(matrix[1][2]); // 6
+
+// Array methods chaining
+const result = [1, 2, 3, 4, 5]
+    .filter(num => num % 2 === 0)  // [2, 4]
+    .map(num => num * 2)           // [4, 8]
+    .reduce((acc, num) => acc + num, 0); // 12</code></pre>
+                </div>
+            </section>
+
+            <!-- DOM Manipulation section -->
+            <section id="dom-manipulation" class="content-section">
+                <h2 class="section-title">DOM Manipulation</h2>
+                <p class="section-text">
+                    The Document Object Model (DOM) is a programming interface for web documents. JavaScript can
+                    interact with the DOM to dynamically modify the content, structure, and styling of web pages.
+                </p>
+                <div class="code-block">
+                    <pre><code>// Selecting elements
+const element = document.getElementById('myId');
+const elements = document.getElementsByClassName('myClass');
+const tagElements = document.getElementsByTagName('div');
+const queryElement = document.querySelector('#myId .myClass');
+const queryElements = document.querySelectorAll('.myClass');
+
+// Creating elements
+const newDiv = document.createElement('div');
+const newText = document.createTextNode('Hello World');
+newDiv.appendChild(newText);
+
+// Modifying content
+element.textContent = 'New text content';
+element.innerHTML = '<strong>Bold text</strong>';
+element.setAttribute('class', 'new-class');
+element.setAttribute('data-id', '123');
+
+// Styling elements
+element.style.color = 'red';
+element.style.backgroundColor = 'blue';
+element.style.fontSize = '16px';
+element.classList.add('active');
+element.classList.remove('inactive');
+element.classList.toggle('highlight');
+
+// Event handling
+element.addEventListener('click', function(event) {
+    console.log('Element clicked!');
+    event.preventDefault(); // Prevent default behavior
+});
+
+// Event delegation
+document.addEventListener('click', function(event) {
+    if (event.target.matches('.button')) {
+        console.log('Button clicked!');
+    }
+});
+
+// Form handling
+const form = document.querySelector('form');
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    console.log(data);
+});
+
+// Async operations with DOM
+async function fetchData() {
+    try {
+        const response = await fetch('/api/data');
+        const data = await response.json();
+        updateDOM(data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+function updateDOM(data) {
+    const container = document.getElementById('data-container');
+    container.innerHTML = data.map(item => 
+        `<div class="item">${item.name}</div>`
+    ).join('');
+}
+
+// Animation and transitions
+function animateElement(element) {
+    element.style.transition = 'all 0.3s ease';
+    element.style.transform = 'translateX(100px)';
+    element.style.opacity = '0.5';
+}
+
+// Local storage
+localStorage.setItem('user', JSON.stringify({ name: 'John', age: 30 }));
+const user = JSON.parse(localStorage.getItem('user'));
+localStorage.removeItem('user');</code></pre>
+                </div>
+            </section>
+
+
+            <!-- External reference links section -->
+            <section id="reference" class="content-section">
+                <h2 class="section-title">Reference</h2>
+                <div class="reference-grid">
+                    <div class="reference-item">
+                        <h3>MDN Web Docs</h3>
+                        <p>Comprehensive JavaScript documentation and tutorials</p>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" class="reference-link">Visit
+                            MDN</a>
+                    </div>
+                    <div class="reference-item">
+                        <h3>JavaScript.info</h3>
+                        <p>Modern JavaScript tutorial with examples</p>
+                        <a href="https://javascript.info/" class="reference-link">Visit JavaScript.info</a>
+                    </div>
+                    <div class="reference-item">
+                        <h3>W3Schools</h3>
+                        <p>JavaScript reference and examples</p>
+                        <a href="https://www.w3schools.com/js/" class="reference-link">Visit W3Schools</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Page footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 JavaScript Technical Documentation.</p>
+            <a href="https://github.com" class="footer-link">View Repository</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
